@@ -1,22 +1,20 @@
-Version: 2.1
-
-jobs:
-  name: create_infrastructure
-  docker:
-    - Image: amazon/aws-cli
-  steps:
-    - checkout
-    - run:
-      name: Ensure there is backend
-      command: |
-        aws cloudformation deploy \
-        --template-file template.yml \
-        --stack-name my-stack
-       
- ## aws cloudformation create-stack --stack-name createInfrastructure --region=us-east-1 --template-body file://template.yml
+  jobs:
+    name: create_infrastructure
+    docker:
+      - Image: amazon/aws-cli
+    steps:
+      - checkout
+      - run:
+        name: Ensure there is backend
+        command: |
+          aws cloudformation deploy \
+          --template-file template.yml \
+          --stack-name my-stack
+        
+  ## aws cloudformation create-stack --stack-name createInfrastructure --region=us-east-1 --template-body file://template.yml
 
 
-workflows:
-  my_workflow:
-    jobs:
-      - create_infrastructure
+  workflows:
+    my_workflow:
+      jobs:
+        - create_infrastructure
