@@ -1,0 +1,14 @@
+Version: 2.1
+
+jobs:
+  name: create_infrastructure
+  docker:
+    - Image: amazon/aws-cli
+  steps:
+    - run: aws cloudformation create-stack --stackname createInfrastructure --region=us-east-1 --template-body file://template.yml
+
+
+workflows:
+  create_infrastructure_workflow
+    jobs:
+      - create_infrastructure
