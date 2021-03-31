@@ -9,6 +9,6 @@ jobs:
 
 
 workflows:
-  create_infrastructure_workflow
+  create_infrastructure_workflow:
     jobs:
       - create_infrastructure
