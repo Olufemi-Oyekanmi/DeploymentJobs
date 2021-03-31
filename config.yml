@@ -9,6 +9,7 @@ jobs:
 
 
 workflows:
-  create_infrastructure_workflow:
+  version: 2
+  job_one_and_two:
     jobs:
       - create_infrastructure
