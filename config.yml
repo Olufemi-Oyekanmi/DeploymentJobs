@@ -5,11 +5,18 @@ jobs:
   docker:
     - Image: amazon/aws-cli
   steps:
-    - run: aws cloudformation create-stack --stackname createInfrastructure --region=us-east-1 --template-body file://template.yml
+    - checkout
+    - run:
+      name: Ensure there is backend
+      command: |
+        aws cloudformation deploy \
+        --template-file template.yml \
+        --stack-name my-stack
+       
+ ## aws cloudformation create-stack --stack-name createInfrastructure --region=us-east-1 --template-body file://template.yml
 
 
 workflows:
-  version: 2
-  job_one_and_two:
+  my_workflow:
     jobs:
       - create_infrastructure
